@@ -8,19 +8,21 @@ const rl = readline.createInterface({
 });
 
 rl.question("Enter your driving speed: ",function(speed){
-    checkSpeedForPoints(parseInt(speed))
+    console.log(checkSpeedForPoints(parseInt(speed)));
+    rl.close();
 });
 
-
+//we then check if the speed is below the  safe driving speed of 70,
+//if the speed is exceeded we increase the demrit points per 5km over the limit
 function checkSpeedForPoints(speed){
-    if (speed <= 70){
-        return console.log('ok')
+    if (speed < 70){
+        return ('ok')
     }
     else if(speed>70){
         const demeritPoints = Math.floor((speed - 70) / 5)
-         console.log(`${demeritPoints} has been deducted from your merit points.Please Drive safe`)
+        return (`${demeritPoints} has been deducted from your merit points.Please Drive safe`)
     }
-    rl.close();
+    
 }
 
 
